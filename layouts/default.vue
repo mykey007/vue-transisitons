@@ -1,53 +1,60 @@
 <template>
   <div>
+    <app-navigation />
     <nuxt/>
   </div>
 </template>
 
-<style>
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: mapState(['page'])
 }
+</script>
 
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
+<style scoped lang="scss">
+ul {
+  list-style: none;
+  li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  a,
+  a:active,
+  a:visited {
+    color: white;
+    text-decoration: none;
+  }
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.nuxt-link-active {
+  font-weight: bold;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.items,
+.list-move {
+  transition: all 0.4s ease;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.list-leave-active {
+  position: absolute;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+#text {
+  transform-origin: 50% 50%;
+}
+svg {
+  fill: #a8dadc;
+}
+.active {
+  fill: #e63946;
+  .rect {
+    transform: translate3d(0, 30px, 0);
+  }
+  .circ {
+    transform: translate3d(30px, 0, 0) scale(0.5);
+  }
+  .text {
+    transform: rotate(90deg) scaleX(0.08) translate3d(-300px, -35px, 0);
+  }
+  .footer {
+    transform: translate3d(100px, 0, 0);
+  }
 }
 </style>
-
